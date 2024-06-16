@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--   Step 3: Create, config Aspect Proxy(JoinPoint & Advice) -->
+    <!-- 1. Define Join Point-->
+    <bean id="movieService" class="com.spring.service.MovieService">
+        <property name="name" value="Tom and Jerry"></property>
+        <property name="catalog" value="5" ></property>
+        <!-- Contains 2 JointPoint method printName & printCatalog-->
+    </bean>
+    <!-- 2. Define Advice-->
+    <bean id="movieServiceBeforeAdvice" class="com.spring.aop.MovieAopBeforeAdvice">
+
+    </bean>
+<!--     3. Define Proxy-->
+    <bean id="movieServiceProxyUsingAdvice" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!-- 3. JointPoint-->
+        <property name="target" ref="movieService"></property>
+    <!--3. Advice*/Advisor-->
+        <property name="interceptorNames">
+            <list>
+                <value>movieServiceBeforeAdvice</value>
+            </list>
+        </property>
+    </bean>
+</beans>

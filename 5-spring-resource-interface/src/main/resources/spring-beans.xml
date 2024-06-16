@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id="action" class="com.spring.bean.MovieCatalog" scope="singleton">
+        <constructor-arg value="Action"/>
+    </bean>
+
+    <bean id="cartoon" class="com.spring.bean.MovieCatalog">
+        <constructor-arg value="Cartoon"/>
+    </bean>
+
+    <bean id="movieRecommender" class="com.spring.bean.MovieRecommender" init-method="init" destroy-method="destroy">
+        <constructor-arg ref="action"/>
+    </bean>
+
+
+</beans>

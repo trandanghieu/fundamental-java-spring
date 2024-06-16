@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="bean-overview.xml"></import>
+
+    <bean id="itemGroup" class="com.spring.bean.ItemGroup">
+        <property name="id" value="1"></property>
+        <property name="name" value="Drink"></property>
+    </bean>
+
+    <bean id="item" class="com.spring.bean.Item">
+        <property name="id" value="101"></property>
+        <property name="name" value="Beer"></property>
+        <property name="itemGroup" ref="itemGroup"></property>
+    </bean>
+
+
+
+
+    <import resource="spring-scope-lifecycle.xml"/>
+
+</beans>
